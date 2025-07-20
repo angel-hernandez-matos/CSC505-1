@@ -13,21 +13,22 @@ class RenderElement:
      @staticmethod
      def draw_element(text, width = 30):
          lines = text.split('\n')
-         element = ["╔" + "═" * width + "╗"]
+         element = ["\t╔" + "═" * width + "╗"]
 
          for line in lines:
-             element.append("║" + line.center(width) + "║")
-         element.append("╚" + "═" * width + "╝")
+             element.append("➡️ " + "\t║" + line.center(width) + "║")
+         element.append("\t╚" + "═" * width + "╝")
 
          return element
 
      @staticmethod
      def connect_elements(elements):
          retval = []
-         for i, element in enumerate(elements):
-             retval.extend(element)
-             if i < len(elements) - 1:
-                 retval.append(" " * (len(element[0]) // 2) + "↓")
+         num_lines = len(elements[0])
+
+         for i in range(num_lines):
+             line = " ".join(element[i] for element in elements)
+             retval.append(line)
 
          return "\n".join(retval)
 
