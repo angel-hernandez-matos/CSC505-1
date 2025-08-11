@@ -65,7 +65,7 @@ class CheckWriter:
         dollar_words = self.__convert_number_to_words(dollar_amount)
         cent_words = self.__convert_number_to_words(cents_amount)
 
-        return f"The amount ${amount} in words is '{dollar_words} dollars and {cent_words} cents.'"
+        return f"\nThe amount ${amount} in words is '{dollar_words} dollars and {cent_words} cents.'"
 
 
 def clear_screen():
