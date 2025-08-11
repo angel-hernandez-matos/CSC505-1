@@ -52,12 +52,10 @@ class CheckWriter:
 
         return retval
 
-
     def write_check(self, amount, print_full_message = True):
         words_in_amount =  self.__convert_amount_to_words(amount) \
             if print_full_message else self.__convert_number_to_words(amount)
-
-        print(words_in_amount)
+        print(f"\t{words_in_amount}")
 
     def __convert_amount_to_words(self, amount):
         dollar_amount = int(amount)
@@ -65,8 +63,7 @@ class CheckWriter:
         dollar_words = self.__convert_number_to_words(dollar_amount)
         cent_words = self.__convert_number_to_words(cents_amount)
 
-        return f"\nThe amount ${amount} in words is '{dollar_words} dollars and {cent_words} cents.'"
-
+        return f"The amount ${amount} in words is '{dollar_words} dollars and {cent_words} cents.'"
 
 def clear_screen():
     # 'nt' means Windows, otherwise assume POSIX (*nix)
@@ -81,8 +78,9 @@ def main():
      cw = CheckWriter()
      options = [False, True]
      while True:
-      amount = float(input('\nEnter amount for check: $'))
-      for option in options:
+       amount = float(input('\nEnter amount for check: $'))
+       print()
+       for option in options:
          cw.write_check(amount, option)
     except Exception as e:
         print(e)
